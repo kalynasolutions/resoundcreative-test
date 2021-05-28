@@ -45,3 +45,8 @@ You will be working on a simple Todo app using Laravel and Vuejs. This should be
 
 #### Back End Development
 1. Implement the necessary methods in the Todo Controller (/app/Http/Controllers/Api/TodoController.php)
+
+### Project Submission
+Once you have completed development, you can submit your code in one of two ways:
+1. Commit your changes to your own public git repository that we can clone
+2. Bundle your code into a zip file and send it to us
