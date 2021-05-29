@@ -26,6 +26,10 @@
 
 <script>
 export default {
-    //Todo: Implement Registration Functionality
+    /**
+     * Todo: Implement Registration Functionality.
+     * You should redirect the user to the Todo Dashboard
+     * after they register.
+     */
 }
 </script>

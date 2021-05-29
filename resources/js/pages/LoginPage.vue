@@ -26,6 +26,10 @@
 
 <script>
 export default {
-    //Todo: Implement Login Functionality
+    /**
+     * Todo: Implement Login Functionality.
+     * You should redirect the user to the Todo Dashboard
+     * after they login.
+     */
 }
 </script>
