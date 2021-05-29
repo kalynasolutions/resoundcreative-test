@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', 'Api\AuthController@login');
-Route::post('register', 'Api\AuthController@register');
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('todos', 'Api\TodoController@index');
-    Route::post('todos', 'Api\TodoController@store');
-    Route::put('todos/{todoId}', 'Api\TodoController@update');
-    Route::delete('todos/{todoId}', 'Api\TodoController@destroy');
+    Route::get('todos', [TodoController::class, 'index']);
+    Route::post('todos', [TodoController::class, 'store']);
+    Route::put('todos/{todoId}', [TodoController::class, 'update']);
+    Route::delete('todos/{todoId}', [TodoController::class, 'destroy']);
 });
