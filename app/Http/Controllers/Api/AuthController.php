@@ -12,6 +12,8 @@ class AuthController extends Controller
     /**
      * Handle an authentication attempt.
      *
+     * TODO: *Developer* Need refactor
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -38,6 +40,8 @@ class AuthController extends Controller
 
     /**
      * Register a new user
+     *
+     * TODO: *Developer* Need refactor
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
