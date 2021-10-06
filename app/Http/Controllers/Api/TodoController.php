@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TodoRequest;
+use App\Http\Resources\TodoResource;
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -11,57 +14,49 @@ class TodoController extends Controller
      * List Todos for only the authenticated user
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)
     {
-        $todos = [];
-
-        //TODO: Implement this method
-
-        return response()->json($todos);
+        return TodoResource::collection($request->user()->todos);
     }
 
     /**
      * Create a new Todo for the authenticated user
      *
-     * @param Request $request
+     * @param  TodoRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        $todo = null;
-
-        //TODO: Implement this method
-
-        return response()->json($todo);
+        return TodoResource::make($request->user()->todos()->create($request->validated()));
     }
 
     /**
      * Update a Todo for the authenticated user
      *
-     * @param Request $request
-     * @param $todoId
+     * @param  TodoRequest  $request
+     * @param  Todo  $todo
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $todoId)
+    public function update(TodoRequest $request, Todo $todo)
     {
-        //TODO: Implement this method
+        $todo->update($request->validated());
 
-        return response()->json([]);
+        return TodoResource::make($todo);
     }
 
     /**
      * Delete a Todo for the authenticated user
      *
-     * @param Request $request
-     * @param $todoId
+     * @param  Request  $request
+     * @param  Todo  $todo
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Request $request, $todoId)
+    public function destroy(Request $request, Todo $todo)
     {
-        //TODO: Implement this method
+        $todo->delete();
 
-        return response()->json([]);
+        return response()->json(['message' => 'Todo successfully deleted']);
     }
 }
